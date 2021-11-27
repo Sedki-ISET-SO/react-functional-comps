@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import './style.css';
-import Form from './Form';
-import Contact from './Contact';
-import Contacts from './Contacts';
+import '../Styles/style.css';
+import Form from '../Components/Form';
+import Contact from '../Components/Contact';
+import Contacts from '../Components/Contacts';
 
 function App() {
   let [form, setForm] = useState({
-    fname: '',
-    lname: '',
-    submitted: false,
+    gender: '',
+    name: '',
+    age: '',
+    date: '',
+    country: '',
   });
 
   let [contacts, setContacts] = useState([]);
@@ -22,6 +24,7 @@ function App() {
   let handleSubmit = (event) => {
     event.preventDefault();
     setContacts([...contacts, { ...form, id: contacts.length + 1 }]);
+    console.log(contacts.length);
   };
 
   let handleDelete = (contact) => {
@@ -29,7 +32,7 @@ function App() {
     setContacts(contacts.filter((item) => item.id !== contact.id));
   };
   return (
-    <div className="App App-header">
+    <div>
       <Form
         form={form}
         handleChange={handleChange}
